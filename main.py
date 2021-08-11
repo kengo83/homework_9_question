@@ -62,13 +62,9 @@ class Tweet_bot:
         try:
             if len(add_cart_button) >= 1:
                 print('商品の在庫はあります。')
-                try:  
-                    self.Tweet(f"{date}:{product_name[0].text}の在庫はあります")
-                except tweepy.TweepError as error:
-                    if error.api_code == 187:
-                        print('エラーが発生しました。')
-                    else:
-                        raise error
+                self.Tweet(f"{date}:{product_name[0].text}の在庫はあります")
+                if len(add_cart_button) == 0:
+                    self.Tweet(f"{date}:{product_name[0].text}の在庫はありません")
             else:
                 print('商品の在庫はありません。')
                 #self.Tweet(f"{date}:{product_name[0].text}の在庫はありません")
